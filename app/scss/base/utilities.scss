@@ -10,13 +10,16 @@
 .text-extrasmall 	{}
 .text-big 			{}
 .text-extrabig 		{}
-.text-uppercase 	{}
+.text-uppercase 	{text-transform: uppercase;}
 .text-lowercase 	{}
+.font-primary 	{font-family: $font-1;}
+.font-secondary 	{font-family: $font-1;}
 
 
 
 
 /*color utilities*/
+.text-white 		{color: white !important;}
 
 
 /*flow utilities*/

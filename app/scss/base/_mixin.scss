@@ -64,6 +64,7 @@
     @media screen and (max-width: 568px) {
         font-size: $font-568;
     }
+
 }
 
 @mixin line-height-kit($base-line-height, $line-height-1200, $line-height-992, $line-height-768, $line-height-568) {

@@ -4,11 +4,31 @@
 
 $(document).ready(function(){
 
-        var swiper = new Swiper('.swiper-hero', {
-          pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-          },
+    // РіР°РјР±СѓСЂРіРµСЂ-РјРµРЅСЋ Р°РЅРёРјР°С†РёСЏ РєРЅРѕРїРєРё
+    $('.js-toggle-hamburger').click(function() {
+        $(this).toggleClass('is-active');
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var swiperHero = new Swiper('.js-hero-slider', {
+            spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
         });
 
 
@@ -37,7 +57,7 @@ $(document).ready(function(){
 
 
         // range slider in filters
-        // сайт плагина: 
+        // Г±Г Г©ГІ ГЇГ«Г ГЈГЁГ­Г : 
         // ionden.com/a/plugins/ion.rangeSlider/api.html
 
         $(".js-range-slider").ionRangeSlider({
@@ -64,7 +84,7 @@ $(document).ready(function(){
 
 
 
-        // анимация стрелок в карточке товара
+        // Г Г­ГЁГ¬Г Г¶ГЁГї Г±ГІГ°ГҐГ«Г®ГЄ Гў ГЄГ Г°ГІГ®Г·ГЄГҐ ГІГ®ГўГ Г°Г 
         $('.product-controls__arrow-up, .product-controls__arrow-down').on('mousedown', function() {
             $(this).addClass('pressed');
         });
@@ -78,7 +98,7 @@ $(document).ready(function(){
 
 
 
-        // все товары - скролл до секции
+        // ГўГ±ГҐ ГІГ®ГўГ Г°Г» - Г±ГЄГ°Г®Г«Г« Г¤Г® Г±ГҐГЄГ¶ГЁГЁ
         $("#scrollToFeatures").click(function() {
             $([document.documentElement, document.body]).animate({
                 scrollTop: $("#scrollToFeatures").offset().top
@@ -90,11 +110,11 @@ $(document).ready(function(){
 
 
 
-        // функционал внутри меню каталога
+        // ГґГіГ­ГЄГ¶ГЁГ®Г­Г Г« ГўГ­ГіГІГ°ГЁ Г¬ГҐГ­Гѕ ГЄГ ГІГ Г«Г®ГЈГ 
 
         $('.js-show-product-category-list').on('click', function() {
 
-            if ($( window ).width() > 768) { // Если десктоп, показываем соответствующую подкатегорию справа
+            if ($( window ).width() > 768) { // Г…Г±Г«ГЁ Г¤ГҐГ±ГЄГІГ®ГЇ, ГЇГ®ГЄГ Г§Г»ГўГ ГҐГ¬ Г±Г®Г®ГІГўГҐГІГ±ГІГўГіГѕГ№ГіГѕ ГЇГ®Г¤ГЄГ ГІГҐГЈГ®Г°ГЁГѕ Г±ГЇГ°Г ГўГ 
                 var categoryID = $(this).attr('id');
                 var categoryProdList = $('.product-category-list[data-id="'+categoryID+'"]');
 
@@ -103,7 +123,7 @@ $(document).ready(function(){
 
                 $('.catalog-link__label').removeClass('active');
                 $(this).addClass('active');
-            } else { // Если мобилка, раскрываем аккордеон
+            } else { // Г…Г±Г«ГЁ Г¬Г®ГЎГЁГ«ГЄГ , Г°Г Г±ГЄГ°Г»ГўГ ГҐГ¬ Г ГЄГЄГ®Г°Г¤ГҐГ®Г­
 
                 if( !$(this).hasClass('active') ) {
                     $('.catalog-link__label').removeClass('active');
@@ -121,7 +141,7 @@ $(document).ready(function(){
 
 
 
-        // открытие каталога - разные варианты
+        // Г®ГІГЄГ°Г»ГІГЁГҐ ГЄГ ГІГ Г«Г®ГЈГ  - Г°Г Г§Г­Г»ГҐ ГўГ Г°ГЁГ Г­ГІГ»
 
         $('.js-catalog-menu').on('click', function() {
             
@@ -129,7 +149,7 @@ $(document).ready(function(){
                 var catalogBtnType = $(this).attr('id');
 
 
-                if(catalogBtnType == 'catalog-menu-in-promo') { // меню поверх промо-блока
+                if(catalogBtnType == 'catalog-menu-in-promo') { // Г¬ГҐГ­Гѕ ГЇГ®ГўГҐГ°Гµ ГЇГ°Г®Г¬Г®-ГЎГ«Г®ГЄГ 
                     if( $('#catalog-menu').hasClass('active') ) {
                         $('#catalog-menu').removeClass('menu_catalog menu_sticky active');
                         $('.overlay_catalog-menu').hide();
@@ -139,7 +159,7 @@ $(document).ready(function(){
                     }
                 }
 
-                if(catalogBtnType == 'catalog-menu-in-sticky-header') { // меню в прилипающей шапке
+                if(catalogBtnType == 'catalog-menu-in-sticky-header') { // Г¬ГҐГ­Гѕ Гў ГЇГ°ГЁГ«ГЁГЇГ ГѕГ№ГҐГ© ГёГ ГЇГЄГҐ
                     if( $('#catalog-menu').hasClass('active') ) {
                         $('#catalog-menu').removeClass('menu_catalog menu_sticky active');
                         $('.page-wrapper').removeClass('no-scroll');
@@ -171,7 +191,7 @@ $(document).ready(function(){
 
 
 
-        // открытие и закрытие корзины
+        // Г®ГІГЄГ°Г»ГІГЁГҐ ГЁ Г§Г ГЄГ°Г»ГІГЁГҐ ГЄГ®Г°Г§ГЁГ­Г»
 
         $('.js-basket-controls').on('click', function() {
             if( !$('.basket').hasClass('active') ) {
@@ -189,7 +209,7 @@ $(document).ready(function(){
 
 
 
-        // мобильное меню
+        // Г¬Г®ГЎГЁГ«ГјГ­Г®ГҐ Г¬ГҐГ­Гѕ
         $('.js-open-mobile-menu').on('click', function() {
 
             if( !$('#mobile-menu').hasClass('active') ) {
@@ -206,7 +226,7 @@ $(document).ready(function(){
 
 
 
-        // красивое наведение на партнеров
+        // ГЄГ°Г Г±ГЁГўГ®ГҐ Г­Г ГўГҐГ¤ГҐГ­ГЁГҐ Г­Г  ГЇГ Г°ГІГ­ГҐГ°Г®Гў
 
         $('.partners').on('mouseenter', function() {
             $('.partners .partner-thumb').addClass('blurred');
@@ -227,14 +247,14 @@ $(document).ready(function(){
 
 
 
-        // сортировка товаров
+        // Г±Г®Г°ГІГЁГ°Г®ГўГЄГ  ГІГ®ГўГ Г°Г®Гў
         $('.js-prod-sort').on('click', function() {
             $('.js-prod-sort').removeClass('active');
             $(this).addClass('active');
         });
 
 
-        // вид вывода товаров
+        // ГўГЁГ¤ ГўГ»ГўГ®Г¤Г  ГІГ®ГўГ Г°Г®Гў
         $('.js-prod-view').on('click', function() {
             $('.js-prod-view').removeClass('active');
             $(this).addClass('active');
@@ -264,10 +284,10 @@ $(document).ready(function(){
 
 
 
-// 2. появления
+// 2. ГЇГ®ГїГўГ«ГҐГ­ГЁГї
 // ==============
 
-    // функция, которая "собирает" первый слайд. Запускается после прелоадера. См. прелоадер
+    // ГґГіГ­ГЄГ¶ГЁГї, ГЄГ®ГІГ®Г°Г Гї "Г±Г®ГЎГЁГ°Г ГҐГІ" ГЇГҐГ°ГўГ»Г© Г±Г«Г Г©Г¤. Г‡Г ГЇГіГ±ГЄГ ГҐГІГ±Гї ГЇГ®Г±Г«ГҐ ГЇГ°ГҐГ«Г®Г Г¤ГҐГ°Г . Г‘Г¬. ГЇГ°ГҐГ«Г®Г Г¤ГҐГ°
 
 
 
@@ -276,7 +296,7 @@ $(document).ready(function(){
     //     $('.swiper-slide').find('.hero__slide-number, .hero__info h1, .hero__info p, .hero__info a, .hero__img').removeClass('up');
     // }
 
-    // // шторки
+    // // ГёГІГ®Г°ГЄГЁ
     // $(window).scroll(function() {
     //     $('.trigger').each(function() {
     //         if( $(this).visible(true) ) {  
@@ -301,7 +321,7 @@ $(document).ready(function(){
         // function openMenu() {
         //     if ( !$('.menu').hasClass('menu_active') ) {
         //         $('.menu').addClass('menu_active');
-        //         $('.menu .col-4').addClass('visible'); //анимации появления колонок
+        //         $('.menu .col-4').addClass('visible'); //Г Г­ГЁГ¬Г Г¶ГЁГЁ ГЇГ®ГїГўГ«ГҐГ­ГЁГї ГЄГ®Г«Г®Г­Г®ГЄ
         //         $('body').addClass('no-scroll');
         //     } else {
         //         $('.menu').removeClass('menu_active');
@@ -330,7 +350,7 @@ $(document).ready(function(){
 
 
 
-// 4. форма
+// 4. ГґГ®Г°Г¬Г 
 // ==============
 
 
@@ -397,7 +417,7 @@ $(document).ready(function(){
     });
 
 
-    // отправка колбека
+    // Г®ГІГЇГ°Г ГўГЄГ  ГЄГ®Г«ГЎГҐГЄГ 
     $(".modal form").on('submit', function(e){
             e.preventDefault();
             var modal = $(this).parents('.modal');
