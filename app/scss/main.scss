@@ -1,0 +1,19 @@
+
+@import "../../node_modules/rfs/sass";
+@import "base/mixin";
+@import "base/var";
+@import "base/normalize";
+@import "base/typography";
+@import "base/utilities";
+@import "components/accordeon";
+
+
+@import "libs/animate";
+
+
+.wrapper {
+}
+
+body {
+ 	@include font-size(40);
+}
