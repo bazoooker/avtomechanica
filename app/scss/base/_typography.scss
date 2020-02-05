@@ -25,6 +25,9 @@ h6 {
 
 .h1 {@include font-size(44);}
 .h2 {@include font-size(40);}
+.h3 {@include font-size(30);}
+.h4 {@include font-size(26);}
+.h5 {@include font-size(20);}
 
 h1 { @include font-size(40); }
 h2 { @include font-size(36); }

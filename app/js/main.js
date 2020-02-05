@@ -10,6 +10,17 @@ $(document).ready(function(){
     });
 
 
+    // список категорий на главной
+    $('.js-catalog-unit-hover').mouseenter(function() {
+        // $('.js-catalog-unit-hover').addClass('disabled');
+        $(this).addClass('active');
+    });
+    $('.js-catalog-unit-hover').mouseleave(function() {
+        // $('.js-catalog-unit-hover').removeClass('disabled');
+        $(this).removeClass('active');
+    });
+
+
 
 
 
@@ -31,26 +42,28 @@ $(document).ready(function(){
             },
         });
 
+        var swiperPartners = new Swiper('.js-partners-slider', {
+            slidesPerView: 4,
+            spaceBetween: 100,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
 
-
-        var feedbackSwiper = new Swiper('.swiper-feedback', {
-          speed: 800,
+         var swiperAbout = new Swiper('.js-swiper-about', {
+            // spaceBetween: 20,
+            effect: 'flip',
             navigation: {
-                nextEl: '.swiper-feedback__btn-next',
-                prevEl: '.swiper-feedback__btn-prev',
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
             },
         });
 
 
 
-        var teachingSwiper = new Swiper('.swiper-teaching', {
-          speed: 300,
-          pagination: {
-            clickable: true,
-            el: '.teaching-pagination',
-          },
-        });
-
+     
 
 
 
