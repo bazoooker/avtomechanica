@@ -1,0 +1,119 @@
+$input-height: 50px;
+
+
+.signup-form {
+	// @include flex-row(wrap,space-between,center);
+	// margin: 0 113px 0 -10px;
+
+	&>.row {margin-bottom: 0}
+
+}
+
+
+.signup-form-label {
+	position: relative;
+	height: $input-height;
+	border: 1px solid $color-black;
+	border-radius: 25px;
+	overflow: hidden;
+	text-align: left;
+
+	// margin: 7px;
+	display: block;
+
+	&.error {
+		border: 1px solid #ffcaca !important;
+		background-color: #fff1f1 !important;
+	}
+	&.success {
+		border: 1px solid #3cbf3c !important;
+		background-color: #f3fff3 !important;
+	}
+
+	&.comment {
+		height: $input-height * 1.5;
+	}
+
+	input {
+		position: absolute;
+		top:0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+		outline: 0;
+		padding: 12px 25px 0 25px;
+		z-index: 2;
+		overflow: hidden;
+		border-radius: 25px;
+		background-color: transparent;
+	}
+
+	.message-error {
+		position: absolute;
+		bottom: -18px;
+		font-size: 12px;
+		color: red;
+		right: 20px;
+	}
+
+
+}
+.signup-form-floating-placeholder {
+	position: absolute;
+	top:0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+	outline: 0;
+	line-height: $input-height - 2;
+	z-index: 1;
+	padding: 0 0 0 25px;
+	transition: 400ms;
+	font-size: 14px;
+
+	&.float {
+		transform: translateY(-$input-height * 0.3);
+		font-size: 12px;
+		color: $color-black;
+		opacity: .65;
+	}
+}
+
+.signup-form-masked-tel {}
+
+@media screen and (max-width: 1100px) {
+	.signup-form {
+		margin: 0 30px 0 -10px;
+	}
+	.signup-form-floating-placeholder {
+		font-size: 13px;
+		padding: 0 0 0 25px;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.signup-policy {
+		br {display: none;}
+	}
+	.signup-form-floating-placeholder {
+		font-size: 13px;
+		padding: 0 0 0 25px;
+	}
+}
+
+@media screen and (max-width: 850px) {
+	.signup-form {
+		.col-6 {
+			flex: 1 1 100%;
+			max-width: 100%;
+		}
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.signup-form {
+		margin: 0 -8px 0 -8px;
+	}
+}

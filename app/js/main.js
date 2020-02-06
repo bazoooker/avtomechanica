@@ -22,6 +22,33 @@ $(document).ready(function(){
 
 
 
+    $('.js-open').click(function(){
+        var targetName = $(this).data('open-target');                        
+        var elementToOpen = $('#' + targetName);
+        var isClosed = $(elementToOpen).hasClass('hidden');
+
+        if(isClosed) {
+            $(elementToOpen).removeClass('hidden');
+        }else {
+            $(elementToOpen).addClass('hidden');
+        }        
+    });
+
+    $('.js-close').click(function(){
+        var targetName = $(this).data('close-target');                        
+        var elementToOpen = $('#' + targetName); //id элемента, который нужно скрыть
+        $(elementToOpen).addClass('hidden');
+
+        var elemToChange = $(this).data('change-elem'); //любой другой элемент, который нужно изменить при закрытии                        
+        var elemToChangeClass = $(this).data('change-class'); //любой другой элемент, который нужно изменить при закрытии                        
+        $('.' + elemToChange).removeClass(elemToChangeClass);
+    });
+
+
+
+
+
+
 
 
 
@@ -60,6 +87,15 @@ $(document).ready(function(){
                 prevEl: '.swiper-button-prev',
             },
         });
+
+         var swiperSpecs = new Swiper('.js-specs-slider', {
+            spaceBetween: 20,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+
 
 
 
@@ -363,24 +399,25 @@ $(document).ready(function(){
 
 
 
-// 4. ôîðìà
-// ==============
+// form labels----------------------------
 
-
-    $('.js-floating-label').blur();
-
-    $('.js-floating-label').on('focus', function() {
-        $(this).parent().find('.signup-form__floating-placeholder').addClass('float');
-        $(this).parent().addClass('active');
+    // remove floating if user
+    $('.js-floating-label').each(function() {
+        if($(this).val()!=""){
+            $(this).parent().find('.signup-form-floating-placeholder').addClass('float');
+        }
     });
 
+    // floating on focus
+    $('.js-floating-label').blur();
+    $('.js-floating-label').on('focus', function() {
+        $(this).parent().find('.signup-form-floating-placeholder').addClass('float');
+    });
     $('.js-floating-label').on('blur', function() {
         if($(this).val()!=""){} else {
-            $(this).parent().find('.signup-form__floating-placeholder').removeClass('float');
-            $(this).parent().removeClass('active');
+            $(this).parent().find('.signup-form-floating-placeholder').removeClass('float');
         };
     });
-
 
 
 

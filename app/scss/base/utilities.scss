@@ -6,14 +6,24 @@
 .text-left 			{}
 .text-center 		{text-align: center;}
 .text-right 		{}
-.text-small 		{}
+
+.text-small 		{@include font-size(14);}
 .text-extrasmall 	{}
-.text-big 			{@include font-size(18);}
-.text-extrabig 		{}
+.text-size-18		{@include font-size(18);}
+.text-size-20 		{@include font-size(20);}
+.text-size-22 		{@include font-size(22);}
+.text-size-30 		{@include font-size(30);}
+
 .text-uppercase 	{text-transform: uppercase;}
 .text-lowercase 	{text-transform: lowercase;}
+.text-red			{color: $color-red;}
+.text-muted			{opacity: .68 !important;}
+.text-black-50		{color: rgba(0,0,0,.5) !important;}
+
 .font-primary 		{font-family: $font-1;}
 .font-secondary 	{font-family: $font-2;}
+
+.rub 				{font-family: 'Verdana'; font-size: .93em; color: $color-black;}
 
 
 
@@ -26,9 +36,11 @@
 .py-60 {
 	padding: 60px 0;
 }
+.pr-60 {padding-right: 60px;}
 .pd-60 {padding-bottom: 60px;}
 .pd-50 {padding-bottom: 50px;}
 .pd-40 {padding-bottom: 40px;}
+.mb-130 {margin-bottom: 130px;}
 
 .img-resp {
 	max-width: 100%;
