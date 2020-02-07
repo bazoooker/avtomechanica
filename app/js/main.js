@@ -4,10 +4,14 @@
 
 $(document).ready(function(){
 
+
+
     // гамбургер-меню анимация кнопки
     $('.js-toggle-hamburger').click(function() {
         $(this).toggleClass('is-active');
     });
+
+
 
 
     // список категорий на главной
@@ -25,14 +29,6 @@ $(document).ready(function(){
             console.log('more than 992');
         }
     });
-
-
-
-
-
-
-
-
 
 
 
@@ -70,70 +66,85 @@ $(document).ready(function(){
 
 
 
+    // слайдеры ==============================
 
+    var swiperHero = new Swiper('.js-hero-slider', {
+        spaceBetween: 20,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-        var swiperHero = new Swiper('.js-hero-slider', {
-            spaceBetween: 20,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
+    var swiperPartners = new Swiper('.js-partners-slider', {
+        slidesPerView: 1,
+        spaceBetween: 100,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            375: {
+              slidesPerView: 2,
             },
-        });
-
-        var swiperPartners = new Swiper('.js-partners-slider', {
-            slidesPerView: 1,
-            spaceBetween: 100,
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
+            568: {
+              slidesPerView: 3,
             },
-            breakpoints: {
-                375: {
-                  slidesPerView: 2,
-                },
-                568: {
-                  slidesPerView: 3,
-                },
-                992: {
-                  slidesPerView: 4,
-                },
-              }
-        });
-
-         var swiperAbout = new Swiper('.js-swiper-about', {
-            // spaceBetween: 20,
-            effect: 'fade',
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+            992: {
+              slidesPerView: 4,
             },
-        });
+          }
+    });
 
-         var swiperSpecs = new Swiper('.js-specs-slider', {
-            spaceBetween: 20,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-        });
+     var swiperAbout = new Swiper('.js-swiper-about', {
+        // spaceBetween: 20,
+        effect: 'fade',
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+     var swiperSpecs = new Swiper('.js-specs-slider', {
+        spaceBetween: 20,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
 
 
 
+
+
+    // кнопка наверх ================= 
+    function showToTopButton() {
+        if ( window.pageYOffset > 500 ) {
+           $('.to-top').addClass('visible')
+        }
+        else {
+            $('.to-top').removeClass('visible')
+        }
+    }; 
+
+    function scrollToTop() {
+      $("html, body").animate({ scrollTop: 0 }, "slow");
+      return false;
+    }; 
+    
+    $('.js-to-top').click(scrollToTop);
+    $(window).scroll(showToTopButton); 
 
      
 
+
+    $('.btn-hover-basket').click(function() {
+        anime({
+          targets: '.hover-handler-right',
+          translateX: 250
+        });
+    });
 
 
 
@@ -538,21 +549,7 @@ $(document).ready(function(){
 
 
 
-    function showToTopButton() {
-        if ( window.pageYOffset > 500 ) {
-           $('.to-top').addClass('to-top_visible')
-        }
-        else {
-            $('.to-top').removeClass('to-top_visible')
-        }
-    }; 
 
-    function scrollToTop() {
-      $("html, body").animate({ scrollTop: 0 }, "slow");
-      return false;
-    }; 
-    $('.js-scroll-to-top').click(scrollToTop);
-    $(window).scroll(showToTopButton);    
 
 });
 
