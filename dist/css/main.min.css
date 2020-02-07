@@ -928,7 +928,8 @@ section p:last-child {
 body {
   font-family: "Arimo";
   font-weight: 400;
-  color: #242424; }
+  color: #242424;
+  font-size: 1rem; }
 
 h1,
 h2,
@@ -1205,6 +1206,10 @@ ol {
 .img-resp {
   max-width: 100%;
   height: auto; }
+
+@media screen and (max-width: 768px) {
+  .md-mb-30 {
+    margin-bottom: 30px; } }
 
 /*custom styles*/
 .accordeon {
@@ -7355,22 +7360,40 @@ html {
   .specs-slider {
     height: auto; }
   .spec-card.small, .spec-card.big {
-    height: 150px; }
+    height: 150px;
+    flex-wrap: nowrap; }
     .spec-card.small .spec-card-img, .spec-card.big .spec-card-img {
-      height: 75px;
-      width: 75px;
-      flex: 0 0 75px; }
-    .spec-card.small .text-size-18, .spec-card.big .text-size-18 {
-      font-size: 15px;
+      height: 100%;
+      width: 120px;
+      flex: 0 0 120px;
+      margin-right: 25px; }
+    .spec-card.small .vertical-aligner, .spec-card.big .vertical-aligner {
+      flex-wrap: wrap; }
+    .spec-card.small .text-size-18,
+    .spec-card.small .text-size-22, .spec-card.big .text-size-18,
+    .spec-card.big .text-size-22 {
+      font-size: 0.9375rem;
       font-weight: 700; }
-    .spec-card.small .text-size-20.mb-3, .spec-card.big .text-size-20.mb-3 {
+    .spec-card.small .text-size-20,
+    .spec-card.small .text-size-30, .spec-card.big .text-size-20,
+    .spec-card.big .text-size-30 {
       margin-bottom: 10px !important; }
+    .spec-card.small .text-size-30, .spec-card.big .text-size-30 {
+      font-size: 1.25rem; }
   .btn {
     position: relative;
     display: inline-block;
     padding: 7px 50px 7px 28px;
     text-decoration: none;
-    cursor: pointer; } }
+    cursor: pointer; }
+  .catalog-unit {
+    height: auto; }
+  .catalog-unit-content {
+    position: relative;
+    width: auto;
+    left: 0;
+    top: 0;
+    padding: 10px; } }
 
 @media screen and (max-width: 768px) {
   .top-bar,
@@ -7402,4 +7425,45 @@ html {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-    align-items: center; } }
+    align-items: center; }
+  .spec-card.small, .spec-card.big {
+    height: 150px; }
+    .spec-card.small .spec-card-img, .spec-card.big .spec-card-img {
+      height: 100%;
+      width: 70px;
+      flex: 0 0 70px;
+      margin-right: 15px; }
+  .footer.py-60 {
+    padding: 40px 0 20px 0; }
+  .legal {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center; }
+    .legal span {
+      flex: 1 1 100%;
+      padding: 8px 0;
+      text-align: center; }
+      .legal span:nth-child(2) {
+        opacity: .5; } }
+
+@media screen and (max-width: 375px) {
+  .spec-card.small, .spec-card.big {
+    height: 167px; }
+    .spec-card.small .spec-card-img, .spec-card.big .spec-card-img {
+      height: 100%;
+      width: 60px;
+      flex: 0 0 60px;
+      margin-right: 12px; }
+    .spec-card.small .text-size-18,
+    .spec-card.small .text-size-22, .spec-card.big .text-size-18,
+    .spec-card.big .text-size-22 {
+      font-size: 0.8125rem; }
+    .spec-card.small .text-size-20,
+    .spec-card.small .text-size-30, .spec-card.big .text-size-20,
+    .spec-card.big .text-size-30 {
+      font-size: 1rem; }
+    .spec-card.small .text-size-20,
+    .spec-card.small .text-size-30, .spec-card.big .text-size-20,
+    .spec-card.big .text-size-30 {
+      margin-bottom: 6px !important; } }

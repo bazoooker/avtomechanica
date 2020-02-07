@@ -12,15 +12,31 @@ $(document).ready(function(){
 
     // список категорий на главной
     $('.js-catalog-unit-hover').mouseenter(function() {
+        if($(window).width() > 992) {
         // $('.js-catalog-unit-hover').addClass('disabled');
-        $(this).addClass('active');
+            $(this).addClass('active');
+            console.log('more than 992');
+        }
     });
     $('.js-catalog-unit-hover').mouseleave(function() {
-        // $('.js-catalog-unit-hover').removeClass('disabled');
-        $(this).removeClass('active');
+        if($(window).width() > 992) {
+            // $('.js-catalog-unit-hover').removeClass('disabled');
+            $(this).removeClass('active');
+            console.log('more than 992');
+        }
     });
 
 
+
+
+
+
+
+
+
+
+
+    // открытия и закрытия элементов =============================
 
     $('.js-open').click(function(){
         var targetName = $(this).data('open-target');                        
@@ -36,11 +52,17 @@ $(document).ready(function(){
 
     $('.js-close').click(function(){
         var targetName = $(this).data('close-target');                        
-        var elementToOpen = $('#' + targetName); //id элемента, который нужно скрыть
-        $(elementToOpen).addClass('hidden');
+        var elementToClose = $('#' + targetName); //id элемента, который нужно скрыть
+        $(elementToClose).addClass('hidden');
 
+
+        // иногда при закрытии модалки или аккордеона где-то на странице нужно поменять состояние другой кнопки
+        // Нужно в html кнопки указать два параметра: 
+        // 1. класс кнопки, у которой нужно убрать класс
+        // 2. Класс, который нужно убрать
+        // Например, при закрытии меню каталога, в html указываем, что нужно еще найти кнопку гамбургер-меню и деактивировать ее
         var elemToChange = $(this).data('change-elem'); //любой другой элемент, который нужно изменить при закрытии                        
-        var elemToChangeClass = $(this).data('change-class'); //любой другой элемент, который нужно изменить при закрытии                        
+        var elemToChangeClass = $(this).data('change-class'); // получаем класс, который нужно убрать у другого элемента/набора                        
         $('.' + elemToChange).removeClass(elemToChangeClass);
     });
 
@@ -70,18 +92,29 @@ $(document).ready(function(){
         });
 
         var swiperPartners = new Swiper('.js-partners-slider', {
-            slidesPerView: 4,
+            slidesPerView: 1,
             spaceBetween: 100,
             loop: true,
             pagination: {
                 el: '.swiper-pagination',
                 clickable: true,
             },
+            breakpoints: {
+                375: {
+                  slidesPerView: 2,
+                },
+                568: {
+                  slidesPerView: 3,
+                },
+                992: {
+                  slidesPerView: 4,
+                },
+              }
         });
 
          var swiperAbout = new Swiper('.js-swiper-about', {
             // spaceBetween: 20,
-            effect: 'flip',
+            effect: 'fade',
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
@@ -109,25 +142,25 @@ $(document).ready(function(){
         // ñàéò ïëàãèíà: 
         // ionden.com/a/plugins/ion.rangeSlider/api.html
 
-        $(".js-range-slider").ionRangeSlider({
-            skin: "round",
-            type: "double",
-            min: 1000,
-            max: 50000,
-            from: 10000,
-            to: 40000,
-            hide_min_max: true,
-            onChange: function(data) {
-                $('.filter-price__min').val(data.from);
-                $('.filter-price__max').val(data.to);
-            }
-        });
+        // $(".js-range-slider").ionRangeSlider({
+        //     skin: "round",
+        //     type: "double",
+        //     min: 1000,
+        //     max: 50000,
+        //     from: 10000,
+        //     to: 40000,
+        //     hide_min_max: true,
+        //     onChange: function(data) {
+        //         $('.filter-price__min').val(data.from);
+        //         $('.filter-price__max').val(data.to);
+        //     }
+        // });
 
 
 
 
 
-        $('select').niceSelect();
+        // $('select').niceSelect();
 
 
 

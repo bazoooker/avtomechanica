@@ -46,3 +46,9 @@
 	max-width: 100%;
 	height: auto;
 }
+
+@media screen and (max-width: 768px) {
+	.md-mb-30 {
+		margin-bottom: 30px;
+	}
+}

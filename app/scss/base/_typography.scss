@@ -11,6 +11,7 @@ body {
     font-family: $font-2;
     font-weight: 400;
     color: $color-black;
+    @include font-size(16);
 }
 
 h1,

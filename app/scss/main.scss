@@ -1155,6 +1155,8 @@
 // 992= ==============================================================
 
 @media screen and (max-width: 992px) {
+
+	// header
 	.header-search {
 		display: none;
 	}
@@ -1184,17 +1186,27 @@
 	.spec-card {
 		&.small,&.big {
 			height: 150px;
+			flex-wrap: nowrap;
 			.spec-card-img {
-				height: 75px;
-				width: 75px;
-				flex: 0 0 75px;
+				height: 100%;
+				width: 120px;
+				flex: 0 0 120px;
+				margin-right: 25px;
 			}
-			.text-size-18 {
-				font-size: 15px;
+			.vertical-aligner {
+				flex-wrap: wrap;
+			}
+			.text-size-18,
+			.text-size-22 {
+				@include font-size(15);
 				font-weight: 700;
 			}
-			.text-size-20.mb-3 {
+			.text-size-20,
+			.text-size-30 {
 				margin-bottom: 10px !important;
+			}
+			.text-size-30 {
+				@include font-size(20);
 			}
 		}
 	}
@@ -1206,7 +1218,19 @@
 	    padding: 7px 50px 7px 28px;
 	    text-decoration: none;
 	    cursor: pointer;
+	}
 
+
+	// catalog units on main
+	.catalog-unit {
+		height: auto;
+	}
+	.catalog-unit-content {
+		position: relative;
+		width: auto;
+		left: 0;
+		top: 0;
+		padding: 10px;
 	}
 }
 
@@ -1258,22 +1282,41 @@
 
 
 
-// 768= ==============================================================
-
-@media screen and (max-width: 768px) {
-	
-}
-
-
-
-
-
 
 // 568= ==============================================================
 
 @media screen and (max-width: 576px) {
 	.top-bar .container {
 		@include flex-row(nowrap,center,center);
+	}
+
+	.spec-card {
+		&.small,&.big {
+			height: 150px;
+			.spec-card-img {
+				height: 100%;
+				width: 70px;
+				flex: 0 0 70px;
+				margin-right: 15px;
+			}
+		}
+	}
+	
+
+	// footer
+	.footer.py-60 {
+		padding: 40px 0 20px 0;
+	}
+	.legal {
+		@include flex-row(wrap, center, center);
+		span {
+			flex: 1 1 100%;
+			padding: 8px 0;
+			text-align: center;
+			&:nth-child(2) {
+				opacity: .5;
+			}
+		}
 	}
 }
 
@@ -1285,7 +1328,35 @@
 // 413= ==============================================================
 
 @media screen and (max-width: 413px) {
-	
+
+}
+
+// 413= ==============================================================
+
+@media screen and (max-width: 375px) {
+	.spec-card {
+		&.small,&.big {
+			height: 167px;
+			.spec-card-img {
+				height: 100%;
+				width: 60px;
+				flex: 0 0 60px;
+				margin-right: 12px;
+			}
+			.text-size-18,
+			.text-size-22 {
+				@include font-size(13);
+			}
+			.text-size-20,
+			.text-size-30 {
+				@include font-size(16);
+			}
+			.text-size-20,
+			.text-size-30 {
+				margin-bottom: 6px !important;
+			}
+		}
+	}
 }
 
 
