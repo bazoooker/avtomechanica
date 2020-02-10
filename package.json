@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
-    "hamburgers": "^1.1.3"
+    "hamburgers": "^1.1.3",
+    "pretty-checkbox": "^3.0.3"
   }
 }

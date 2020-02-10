@@ -12,6 +12,7 @@
 .text-size-18		{@include font-size(18);}
 .text-size-20 		{@include font-size(20);}
 .text-size-22 		{@include font-size(22);}
+.text-size-26 		{@include font-size(26);}
 .text-size-30 		{@include font-size(30);}
 
 .text-uppercase 	{text-transform: uppercase;}
@@ -24,12 +25,13 @@
 .font-secondary 	{font-family: $font-2;}
 
 .rub 				{font-family: 'Verdana'; font-size: .93em; color: $color-black;}
-
+.text-decoration-none {text-decoration: none;}
 
 
 
 /*color utilities*/
 .text-white 		{color: white !important;}
+.text-yellow 		{color: $color-yellow !important;}
 
 
 /*flow utilities*/

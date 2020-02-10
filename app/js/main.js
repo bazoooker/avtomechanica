@@ -150,22 +150,100 @@ $(document).ready(function(){
 
 
         // range slider in filters
-        // ñàéò ïëàãèíà: 
         // ionden.com/a/plugins/ion.rangeSlider/api.html
 
-        // $(".js-range-slider").ionRangeSlider({
-        //     skin: "round",
-        //     type: "double",
-        //     min: 1000,
-        //     max: 50000,
-        //     from: 10000,
-        //     to: 40000,
-        //     hide_min_max: true,
-        //     onChange: function(data) {
-        //         $('.filter-price__min').val(data.from);
-        //         $('.filter-price__max').val(data.to);
-        //     }
-        // });
+        $(".js-range-slider").ionRangeSlider({
+            skin: "round",
+            type: "double",
+            min: 1000,
+            max: 50000,
+            from: 10000,
+            to: 40000,
+            hide_min_max: true,
+            onChange: function(data) {
+                $('#price-range-min').val(data.from);
+                $('#price-range-max').val(data.to);
+            }
+        });
+
+        // аккордеоны в фильтре
+        $('.js-filter-accordeon').click(function() {
+            var isOpened = $(this).parent().hasClass('active');
+            console.log(isOpened);
+            if(!isOpened) {
+                $(this).parent().addClass('active').find('.filter-accordeon-content').slideDown(200);
+            } else {
+                $(this).parent().removeClass('active').find('.filter-accordeon-content').slideUp(200);
+
+            }
+        });
+
+        // анимция чекбокса
+        $('.js-anim-checkbox').click(function() {
+            var decoElem = $(this).find('.state-deco');
+            $(decoElem).addClass('active');
+            setTimeout(function() {
+                $(decoElem).removeClass('active');
+            }, 300);
+        });
+
+
+        //sorting-icons-animations
+        $('.js-sorting-icons-animations').click(function() {
+            var az = $(this).hasClass('a-z');
+            var za = $(this).hasClass('z-a');
+
+            if(az) {
+                $(this).removeClass('a-z').addClass('z-a');
+            }
+            if(za) {
+                $(this).removeClass('z-a').addClass('a-z');
+            }
+        });
+
+        $('.js-letters-in-name-sorting').click(function() {
+            var az = $(this).hasClass('a-z');
+            var za = $(this).hasClass('z-a');
+
+            if(az) {
+                $('#sorting-name-letters').html('А-Я');
+            }
+            if(za) {
+                $('#sorting-name-letters').html('Я-А');
+            }
+        });
+
+
+        $('.js-view-item-animaiton').click(function() {
+            var self = $(this);
+            $('.view-item').removeClass('active');
+            $(self).addClass('active');
+
+            $(self).addClass('theme-anim');
+            setTimeout(function() {
+                $(self).removeClass('theme-anim');
+            }, 300);
+        });
+
+
+
+
+
+        $('.js-view-cards').click(function() {
+           $('.catalog-list').removeClass('view-list').addClass('view-cards');
+        });
+
+        $('.js-view-list').click(function() {
+           $('.catalog-list').removeClass('view-cards').addClass('view-list');
+
+        });
+
+
+
+
+
+
+
 
 
 
