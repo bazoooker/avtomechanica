@@ -43,7 +43,19 @@ $(document).ready(function(){
             $(elementToOpen).removeClass('hidden');
         }else {
             $(elementToOpen).addClass('hidden');
-        }        
+        };
+
+
+        // иногда при открытии модалки или аккордеона где-то на странице нужно поменять состояние другой кнопки
+        // Нужно в html кнопки указать два параметра: 
+        // 1. класс кнопки, у которой нужно добавить класс
+        // 2. Класс, который нужно убрать
+        var elemToChange = $(this).data('change-elem'); //любой другой элемент, который нужно изменить при открытии                        
+        var elemToChangeClass = $(this).data('change-class'); // получаем класс, который нужно добавить другому элементу/набору                        
+        $('.' + elemToChange).removeClass(elemToChangeClass);   
+
+        console.log(elemToChange);     
+        console.log(elemToChangeClass);     
     });
 
     $('.js-close').click(function(){
@@ -59,7 +71,7 @@ $(document).ready(function(){
         // Например, при закрытии меню каталога, в html указываем, что нужно еще найти кнопку гамбургер-меню и деактивировать ее
         var elemToChange = $(this).data('change-elem'); //любой другой элемент, который нужно изменить при закрытии                        
         var elemToChangeClass = $(this).data('change-class'); // получаем класс, который нужно убрать у другого элемента/набора                        
-        $('.' + elemToChange).removeClass(elemToChangeClass);
+        $('.' + elemToChange).addClass(elemToChangeClass);
     });
 
 
@@ -230,11 +242,31 @@ $(document).ready(function(){
 
 
         $('.js-view-cards').click(function() {
-           $('.catalog-list').removeClass('view-list').addClass('view-cards');
+            var cardsModeOn = $('.catalog-list').hasClass('view-cards');
+
+            if (!cardsModeOn) {
+                $('.catalog-list').addClass('in-progress');
+                setTimeout(function() {
+                    $('.catalog-list').removeClass('view-list').addClass('view-cards');
+                }, 400);
+                setTimeout(function() {
+                    $('.catalog-list').removeClass('in-progress');
+                }, 900);
+            }
         });
 
         $('.js-view-list').click(function() {
-           $('.catalog-list').removeClass('view-cards').addClass('view-list');
+            var listModeOn = $('.catalog-list').hasClass('view-list');
+
+            if (!listModeOn) {
+                $('.catalog-list').addClass('in-progress');
+                setTimeout(function() {
+                    $('.catalog-list').removeClass('view-cards').addClass('view-list');
+                }, 400);
+                setTimeout(function() {
+                    $('.catalog-list').removeClass('in-progress');
+                }, 900);
+            }
 
         });
 
