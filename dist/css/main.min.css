@@ -1863,6 +1863,12 @@ ol {
     .text-size-30 {
       font-size: calc(1.3125rem + 0.75vw) ; } }
 
+.text-size-38 {
+  font-size: 2.375rem; }
+  @media (max-width: 1200px) {
+    .text-size-38 {
+      font-size: calc(1.3625rem + 1.35vw) ; } }
+
 .text-uppercase {
   text-transform: uppercase; }
 
@@ -7955,6 +7961,13 @@ Build date: 2018-12-11 23:23:51
 .border-radius {
   border-radius: 14px; }
 
+.box-shadow {
+  box-shadow: 0 0 22px 0 rgba(0, 0, 0, 0.1);
+  transition: 300ms; }
+  .box-shadow:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 26px 0 rgba(0, 0, 0, 0.2); }
+
 .bg-primary-lines {
   background-image: url(/img/bg/bg-primary-lines.jpg);
   background-position: 50% 50%;
@@ -8003,6 +8016,12 @@ Build date: 2018-12-11 23:23:51
     background-position: bottom right;
     background-repeat: no-repeat;
     z-index: -1; }
+
+.bg-whitesmoke {
+  background-color: whitesmoke; }
+
+.border-light {
+  border: 1px solid #eae9e9; }
 
 .btn {
   position: relative;
@@ -8070,6 +8089,16 @@ Build date: 2018-12-11 23:23:51
 .btn-fancy-basket:hover .basket-icon-right {
   transform: rotate(75deg) translateX(-3px); }
 
+.btn-sort-round {
+  width: 42px;
+  height: 42px;
+  background-color: #EDEDED;
+  border-radius: 50%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center; }
+
 .btn-close {
   background-color: transparent;
   border: 0;
@@ -8100,6 +8129,13 @@ Build date: 2018-12-11 23:23:51
     background-color: #242424; }
   .btn-close:hover::after, .btn-close:hover::before {
     background-color: #0E8EEB; }
+
+.link {
+  display: inline-block;
+  border: 0;
+  outline: 0;
+  padding: 3px 0;
+  background: transparent; }
 
 .theme-link {
   transition: 300ms;
@@ -8841,6 +8877,15 @@ Build date: 2018-12-11 23:23:51
     height: 336px; }
   .photo.height-250 {
     height: 243px; }
+  .photo.photo-ratio-1x1 {
+    padding-top: 100%; }
+  .photo.photo-contain .photo-zoomer {
+    background-position: 50% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-size: 80%; }
+  .photo.product-photo .photo-zoomer::after {
+    background-color: transparent !important; }
 
 .photo-zoomer {
   display: inline-block;
@@ -9005,10 +9050,6 @@ Build date: 2018-12-11 23:23:51
 .filter .btn-close {
   display: none; }
 
-.filter.hidden {
-  opacity: 0;
-  transform: translateX(320px) !important; }
-
 .filter-top {
   height: 28px;
   display: flex;
@@ -9132,9 +9173,6 @@ Build date: 2018-12-11 23:23:51
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px; }
-  .catalog-list-top.hidden {
-    opacity: 0;
-    transform: translateX(320px) !important; }
 
 .catalog-list-total {
   flex: 0 0 100px;
@@ -9408,6 +9446,42 @@ Build date: 2018-12-11 23:23:51
     z-index: -99;
     pointer-events: none; }
 
+.product-detail-controls {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 0 45px 0; }
+
+.product-detail-price {
+  font-size: 2.25rem;
+  font-weight: 700; }
+  @media (max-width: 1200px) {
+    .product-detail-price {
+      font-size: calc(1.35rem + 1.2vw) ; } }
+
+.product-detail-counter {
+  flex: 0 0 112px;
+  margin: 0 30px 0 auto; }
+
+.product-detail-btn {
+  margin: 0 10px 0 0; }
+
+.product-detail-info .tabs {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 23px; }
+  .product-detail-info .tabs .tab-item {
+    margin-right: 30px;
+    cursor: pointer;
+    user-select: none; }
+    .product-detail-info .tabs .tab-item.active {
+      color: #0E8EEB; }
+      .product-detail-info .tabs .tab-item.active .dashed-link {
+        border-bottom: 0 !important; }
+
 @media screen and (max-width: 1200px) {
   .top-bar-nav {
     overflow: auto;
@@ -9511,7 +9585,10 @@ Build date: 2018-12-11 23:23:51
     display: inline-block;
     padding: 7px 50px 7px 28px;
     text-decoration: none;
-    cursor: pointer; }
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    box-shadow: 0; }
   .catalog-unit {
     height: auto; }
   .catalog-unit-content {
@@ -9578,7 +9655,15 @@ Build date: 2018-12-11 23:23:51
         flex: 0 0 40%; }
       .catalog-list-sorting .sorting-item:last-of-type,
       .catalog-list-view .sorting-item:last-of-type {
-        flex: 0 0 60%; } }
+        flex: 0 0 60%; }
+  .filter.hidden {
+    opacity: 0;
+    transform: translateX(320px) !important; }
+  .catalog-list-top.hidden {
+    opacity: 0;
+    transform: translateX(320px) !important; }
+  .product-detail-sorting {
+    display: none; } }
 
 @media screen and (max-width: 768px) {
   .top-bar,
@@ -9617,7 +9702,19 @@ Build date: 2018-12-11 23:23:51
   .catalog-menu-list {
     padding: 45px 25px; }
     .catalog-menu-list .deco-link {
-      flex: 0 0 50%; } }
+      flex: 0 0 50%; }
+  .inner-page .header {
+    padding: 0; }
+  .product-detail-controls {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: center; }
+  .product-detail-price {
+    flex: 1 1 100%;
+    margin: 0 0 10px 0; }
+  .product-detail-counter {
+    margin: 0 30px 0 0; } }
 
 @media screen and (max-width: 576px) {
   .top-bar .container {
@@ -9651,7 +9748,24 @@ Build date: 2018-12-11 23:23:51
         opacity: .5; }
   .section-form::before {
     width: 70%;
-    right: -35%; } }
+    right: -35%; }
+  .product-detail {
+    margin: 40px 0 0 0; }
+  .product-detail-controls {
+    padding: 30px 8px;
+    background-color: #EDEDED;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 14px; }
+  .product-detail-price {
+    margin: 0 0 20px 0;
+    text-align: center; }
+  .product-detail-counter {
+    margin: 0 30px 0 0; }
+    .product-detail-counter .counter-input {
+      background-color: #fff; } }
 
 @media screen and (max-width: 413px) {
   .theme-form.pr-60 {
@@ -9701,4 +9815,15 @@ Build date: 2018-12-11 23:23:51
   .section-form::before {
     width: 130%;
     right: -60%;
-    opacity: .75; } }
+    opacity: .75; }
+  .product-detail-counter {
+    flex: 1 1 100%; }
+  .product-detail-counter {
+    margin: 0 0 0 0; }
+    .product-detail-counter .counter {
+      width: 112px;
+      margin: 0 auto 20px auto; }
+    .product-detail-counter .counter-input {
+      background-color: #fff; }
+  .product-detail-btn {
+    margin: 0; } }

@@ -34,46 +34,61 @@ $(document).ready(function(){
 
     // открытия и закрытия элементов =============================
 
-    $('.js-open').click(function(){
-        var targetName = $(this).data('open-target');                        
+    $('.js-opener').click(function(){
+        var targetName = $(this).data('target-id');                        
         var elementToOpen = $('#' + targetName);
         var isClosed = $(elementToOpen).hasClass('hidden');
-
         if(isClosed) {
             $(elementToOpen).removeClass('hidden');
         }else {
             $(elementToOpen).addClass('hidden');
         };
-
-
-        // иногда при открытии модалки или аккордеона где-то на странице нужно поменять состояние другой кнопки
-        // Нужно в html кнопки указать два параметра: 
-        // 1. класс кнопки, у которой нужно добавить класс
-        // 2. Класс, который нужно убрать
-        var elemToChange = $(this).data('change-elem'); //любой другой элемент, который нужно изменить при открытии                        
-        var elemToChangeClass = $(this).data('change-class'); // получаем класс, который нужно добавить другому элементу/набору                        
-        $('.' + elemToChange).removeClass(elemToChangeClass);   
-
-        console.log(elemToChange);     
-        console.log(elemToChangeClass);     
     });
 
-    $('.js-close').click(function(){
-        var targetName = $(this).data('close-target');                        
-        var elementToClose = $('#' + targetName); //id элемента, который нужно скрыть
+    $('.js-closer').click(function(){
+        var targetName = $(this).data('target-id');                        
+        var elementToClose = $('#' + targetName);
         $(elementToClose).addClass('hidden');
-
-
-        // иногда при закрытии модалки или аккордеона где-то на странице нужно поменять состояние другой кнопки
-        // Нужно в html кнопки указать два параметра: 
-        // 1. класс кнопки, у которой нужно убрать класс
-        // 2. Класс, который нужно убрать
-        // Например, при закрытии меню каталога, в html указываем, что нужно еще найти кнопку гамбургер-меню и деактивировать ее
-        var elemToChange = $(this).data('change-elem'); //любой другой элемент, который нужно изменить при закрытии                        
-        var elemToChangeClass = $(this).data('change-class'); // получаем класс, который нужно убрать у другого элемента/набора                        
-        $('.' + elemToChange).addClass(elemToChangeClass);
     });
 
+
+
+
+
+
+
+    $('.js-changer').click(function(target, classToChage, action) {
+        var target          = $(this).data('changer-target');                    
+        var classToChage    = $(this).data('changer-class');                        
+        var action          = $(this).data('changer-action');
+
+        if(action == "remove") {
+            $('.' + target).removeClass(classToChage);
+        };
+        if(action == "add") {
+            $('.' + target).addClass(classToChage);
+        };
+        if(action == "toggle") {
+            $('.' + target).toggleClass(classToChage);
+        };
+    });
+
+
+    $('.js-close-all').click(function() {
+        $('#filter, #catalog-list-top').addClass('hidden');
+    });
+
+
+
+    $('.js-tab').click(function() {
+        $('.js-tab').removeClass('active');
+        $(this).addClass('active');
+        var targetName = $(this).data('target');
+        $('.tab-container').hide();
+        $('#' + targetName).show();
+
+        console.log(targetName);
+    });
 
 
 
@@ -269,6 +284,8 @@ $(document).ready(function(){
             }
 
         });
+
+
 
 
 

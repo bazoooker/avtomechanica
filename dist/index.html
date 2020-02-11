@@ -96,7 +96,9 @@
 
                         <div class="header-bottom">
 
-                            <button class="hamburger hamburger--elastic js-toggle-hamburger js-open js-category-menu-animation" data-open-target="catalog-menu" type="button">
+                            <button class="hamburger hamburger--elastic js-toggle-hamburger js-opener js-category-menu-animation"        
+                                data-target-id="catalog-menu"
+                                type="button">
                               <span class="hamburger-box">
                                 <span class="hamburger-inner"></span>
                               </span>
@@ -138,10 +140,11 @@
                             <a href="#" class="deco-link mb-4">Экспресс-обслуживание и замена масла</a>
                             <a href="#" class="deco-link mb-4">Электротехника, электроинструмент</a>
                         </nav>
-                        <button class="btn-close js-close js-change-btn-state" 
-                            data-close-target="catalog-menu"
-                            data-change-elem="hamburger" 
-                            data-change-class="is-active">
+                        <button class="btn-close js-closer js-changer" 
+                            data-target-id="catalog-menu"
+                            data-changer-target="hamburger" 
+                            data-changer-class="is-active"
+                            data-changer-action="remove">
                         </button>
                     </div>
                 </div>
@@ -1255,6 +1258,9 @@
                </span>
                <span class='to-top-text'>Вверх</span>
            </div>
+
+           <!-- к id привязана логика открывания фильтра на мобилке -->
+            <div id="overlay" class="overlay hidden js-close-all"></div>
 
        </main>
     </body>
