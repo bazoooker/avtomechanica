@@ -125,6 +125,10 @@
 	path {
 		transition:300ms;
 	}
+	&:active,
+	&:focus {
+		background-color: $color-yellow;
+	}
 	&.btn-hover-white:hover {
 		background-color: #fff;
 		box-shadow: 0 4px 4px 1px rgba(0,0,0,.25);
@@ -459,6 +463,10 @@
 	height: 85px;
 	background-image: url(/img/logo.png);
 	@include bg-contain;
+	transition: 200ms;
+	&:hover {
+		opacity: .8;
+	}
 }
 .header-content {
 	flex: 1 1 100%;
@@ -490,11 +498,115 @@
     align-items: center;
 }
 .delivery-badge {
+	position: relative;
 	margin-right: 60px;
 	@include flex-row(nowrap,space-between,center);
+	text-decoration: none;
 	flex: 0 0 243px;
 	svg {
 		margin-right: 30px;
+	}
+	&:hover {
+		 svg {
+			animation: anim-delivery-badge 750ms infinite;
+		 }
+		 &::before {
+		 	animation: anim-delivery-badge-wind-1 1500ms linear infinite;
+		 }
+		 &::after {
+		 	animation: anim-delivery-badge-wind-1 1100ms linear infinite;
+		 }
+	}
+	&::before,
+	&::after {
+		position: absolute;
+		content: '';
+		left: 0px;		
+		height: 1px;
+		background-color: $color-blue;
+		opacity: 0;
+		z-index: 2;
+	}
+	&::before {
+		top: 29%;
+		width: 11px;
+	}
+	&::after {
+		top: 49%;
+		width: 15px;
+	}
+}
+@keyframes anim-delivery-badge-wind-1 {
+	0% {
+		opacity: 0;
+		transform: translateX(0);
+	}
+	36% {
+		opacity: 1;
+		transform: translateX(44px);
+	}
+	41% {
+		opacity: 0;
+		transform: translateX(44px);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(0);
+	}
+
+}
+@keyframes anim-delivery-badge-wind-2 {
+	0% {
+		opacity: 0;
+		transform: translateX(0);
+	}
+	60% {
+		opacity: 1;
+		transform: translateX(38px);
+	}
+	61% {
+		opacity: 0;
+		transform: translateX(38px);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(0);
+	}
+
+}
+@keyframes anim-delivery-badge {
+	0% {
+		transform: translateX(2px);
+	}
+	10% {
+		transform: translateX(0px);
+	}
+	20% {
+		transform: translateX(1px) translateY(1px);
+	}
+	30% {
+		transform: translateX(0px) translateY(0px);
+	}
+	40% {
+		transform: translateX(1px);
+	}
+	50% {
+		transform: translateX(0px);
+	}
+	60% {
+		transform: translateX(2px);
+	}
+	70% {
+		transform: translateX(0px) translateY(1px);
+	}
+	80% {
+		transform: translateX(1px) translateY(0px);
+	}
+	90% {
+		transform: translateX(0px);
+	}
+	100% {
+		transform: translateX(2px);
 	}
 }
 
@@ -536,15 +648,47 @@
 // BASKET
 
 .btn-basket {
-	flex: 0 0 105px;
+	position: relative;
+	flex: 0 0 106px;
+	width: 106px;
 	margin: 0 18px 0 0;
 	padding: 20px 0;
 	@include flex-row(nowrap,space-between,flex-end);
 	text-decoration: none;
+	z-index: 1;
+	path {
+		transition: 200ms;
+	}
+	&::before {
+		position: absolute;
+		content: '';
+		width: 120%;
+		height: 60%;
+		left: 50%;
+		top: 50%;
+		transform: translateY(-50%) translateX(-50%); 
+		border-radius: 30px;
+		background-color: white;
+		z-index: -1;
+		opacity: 0;
+		box-shadow: 0 3px 6px 1px rgba(0,0,0,.06);
+		transition: 200ms;
+	}
+	&:hover {
+		&::before {
+			opacity: 1;
+		}
+		.btn-basket-icon {
+			path {
+				fill: black;
+			}
+		}
+	}
 }
 .btn-basket-icon {
 	position: relative;
 	margin: 0 9px 0 0;
+	transition: 200ms;
 	.btn-basket-num {
 		position: absolute;
 		right: -4px;
@@ -556,11 +700,13 @@
 		border-radius: 50%;
 		font-size: 9px;
 		font-style: normal;
-
+	}
+	&.active {
+		transform: scale(1.15);
 	}
 }
 .btn-basket-text {
-	margin-bottom: 3px;
+	margin-bottom: 1px;
 }
 
 
@@ -569,10 +715,40 @@
 // COMPARE
 
 .btn-compare {
+	position: relative;
 	flex: 0 0 109px;
 	padding: 20px 0;
 	@include flex-row(nowrap,space-between,flex-end);
 	text-decoration: none;
+	z-index: 1;
+	path {
+		transition: 200ms;
+	}
+	&::before {
+		position: absolute;
+		content: '';
+		width: 120%;
+		height: 60%;
+		left: 50%;
+		top: 50%;
+		transform: translateY(-50%) translateX(-50%); 
+		border-radius: 30px;
+		background-color: white;
+		z-index: -1;
+		opacity: 0;
+		box-shadow: 0 3px 6px 1px rgba(0,0,0,.06);
+		transition: 200ms;
+	}
+	&:hover {
+		&::before {
+			opacity: 1;
+		}
+		.btn-compare-icon {
+			path {
+				fill: black;
+			}
+		}
+	}
 }
 .btn-compare-icon {
 	position: relative;
@@ -1094,9 +1270,28 @@
 		}
 	}
 	&.product-photo {
+		&::after {
+			position: absolute;
+			content: '';
+			bottom: 20px;
+			right: 20px;
+			width: 32px;
+			height: 32px;
+			background-image: url('/img/icons/loupe 2.svg');
+			transform: translateX(70px) translateY(20px);
+			@include bg-contain;
+			transition: 300ms;
+		}
 		.photo-zoomer::after {
 			background-color: transparent !important;
 		}
+		&:hover {
+
+			.photo-zoomer {
+				transform: translateX(-50%) translateY(-50%) !important;
+			}
+		}
+		&:hover::after {transform: translateX(0px) translateY(0px);}
 	}	
 }
 .photo-zoomer {
@@ -1160,7 +1355,6 @@
 		background-repeat: no-repeat;
 	}
 }
-
 .theme-form {}
 .form-horizontal {
 	margin-right: 40px;
@@ -1212,11 +1406,40 @@
 		padding: 0 15px 0 15px;
 	}
 }
+.policy-checkbox {
+	position: relative;
+	padding-left: 24px;
+	&::before {
+		position: absolute;
+		content: '';
+		width: 14px;
+		height: 14px;
+		left: 0;
+		top: 3px;
+		border: 1px solid #fff;
+		border-radius: 2px;
+	}
+	&::after {
+		position: absolute;
+	    content: '';
+	    width: 4px;
+	    height: 12px;
+	    left: 7px;
+	    top: 2px;
+	    border-bottom: 1px solid #fff;
+	    border-right: 1px solid #fff;
+	    transform: rotate(45deg);
+	}
+}
 
 
 
 
 
+
+
+
+// footer
 .footer {}
 	.footer-link {
 	display: block;
@@ -1273,8 +1496,7 @@
 
 // breadcrumbs
 .breadcrumbs {
-	@include flex-row(nowrap,flex-start,center);
-
+	@include flex-row(wrap,flex-start,center);
 }
 .breadcrumb-item {
 	position: relative;
@@ -1331,8 +1553,14 @@
 	color: #fff;
 	cursor: pointer;
 	font-weight: 700;
-	transition: 300ms;
 	user-select: none;
+	transition: opacity 300ms;
+	&.hidden {
+		transition: opacity 0ms;
+		height: 0;
+		padding: 0;
+		opacity: 0;
+	}
 	&:hover {
 		color: $color-yellow;
 	}
@@ -1864,8 +2092,64 @@
 	}
 }
 
+.table-resp {}
+.table-resp-row {
+	@include flex-row(nowrap, space-between, center);
+	height: 34px;
+	&:nth-child(odd) {
+		background-color: whitesmoke;
+	}
+}
+.table-data {
+	padding: 0 10px 0 10px;
+	&:first-child {
+		flex: 0 0 70%;
+	}
+	&:last-child {
+		flex: 0 0 30%;
+		text-align: right;
+	}
+}
 
 
+
+// messages
+.message-basket {
+	position: fixed;
+    bottom: 60px;
+    left: 40px;
+    width: 220px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0e8eeb;
+    border-radius: 14px;
+    opacity: 0;
+    pointer-events: none;
+	transition: 200ms;
+	z-index: 11;
+	@include flex-row(nowrap,center,center);
+
+    &.active {
+    	bottom: 40px;
+		opacity: 1;
+		animation-delay: 100ms;
+		animation-name: anim-message-basket;
+		animation-duration: 200ms;
+    }
+}
+// @keyframes anim-message-basket {
+// 	 0% {
+// 	 	box-shadow: 0 0 0 0 rgba(0,0,0,0);
+// 	 }
+// 	 80% {
+// 	 	box-shadow: 0 0 0 35px $color-blue;
+// 	 }
+// 	 100% {
+// 	 	box-shadow: 0 0 0 0 rgba(0,0,0,0);
+// 	 }
+// }
 
 
 
@@ -1983,6 +2267,19 @@
 			// 		transform: translateX(-50%) translateY(-40%);
 			// 	}
 			// }
+		}
+	}
+
+
+	// prod-detail tabs
+	.product-detail-info {
+		.tabs {
+			.tab-item {
+				margin-right: 20px;
+				.text-size-22 {
+					@include font-size(18);
+				}
+			}
 		}
 	}
 
@@ -2217,6 +2514,9 @@
 
 
 	// catalog-menu
+	.catalog-menu {
+		.btn-close {display: none;}
+	}
 	.catalog-menu-list {
 		padding: 45px 25px;
 		.deco-link {
@@ -2242,6 +2542,19 @@
 	}
 	.product-detail-counter {
 		margin: 0 30px 0 0;
+	}
+
+
+	// prod-detail tabs
+	.product-detail-info {
+		.tabs {
+			.tab-item {
+				margin-right: 15px;
+				.text-size-22 {
+					@include font-size(16);
+				}
+			}
+		}
 	}
 
 }
@@ -2359,6 +2672,27 @@
 			position: absolute;
 			right: 16px;
 			bottom: 16px;
+		}
+	}
+
+	// prod-detail tabs
+	.product-detail-info {
+		padding: 20px;
+		border: 1px solid lightgray;
+		border-radius: 14px;
+		.tabs {
+			@include flex-row(wrap, flex-start, flex-start);
+			border-bottom: 1px solid lightgray;
+			margin: 0 -20px 20px -20px;
+			padding: 0 20px;
+			.tab-item {
+				position: relative;
+				margin: 0 0 15px 0;
+				flex: 1 1 100%;
+				.text-size-22 {
+					@include font-size(22);
+				}
+			}
 		}
 	}
 }

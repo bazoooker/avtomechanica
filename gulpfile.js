@@ -24,7 +24,7 @@ function scripts() {
         .pipe(plumber())
     	.pipe(concat('main.js'))
         .pipe(uglify())
-        .pipe(rename("main.min.js"))
+        .pipe(rename("libs.min.js"))
     	.pipe(dest('dist/js'))
     	.pipe(browserSync.stream());
 }

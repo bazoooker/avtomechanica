@@ -7,10 +7,18 @@
         <meta charset="utf-8" />
         <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
         <meta content="width=device-width, initial-scale=1" name="viewport" />
-        <title>Автомеханика</title>
+        <title>Автомеханика. Оборудование для автосервиса</title>
 
-        <meta content="Шаблон" name="description" />
-        <meta content="Шаблон" name="keywords" />
+        <meta content="Автомеханиика. Оборудование для автосервиса" name="description" />
+        <meta content="Оборудование для автосервиса" name="keywords" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8c8c8c">
+        <meta name="msapplication-TileColor" content="#00aba9">
+        <meta name="theme-color" content="#ffffff">
         
         <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
         <link href="css/main.min.css" rel="stylesheet"/>
@@ -50,7 +58,7 @@
                     <a href="" class="header-logo"></a>
                     <div class="header-content">
                         <div class="header-top">
-                            <div class="delivery-badge">
+                            <a href="#" class="delivery-badge">
                                 <svg width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3.26645 21.6325H0.46645V16.4753L4.66645 9.91158H9.7998V21.6325H7.93315" fill="#0E8EEB"/>
                                     <path d="M23.7999 21.6324H27.5332V6.62975H9.79985V21.6324H19.1332" fill="#0E8EEB"/>
@@ -64,7 +72,7 @@
                                     <path d="M4.27465 9.65842C4.36051 9.5243 4.508 9.44321 4.66665 9.44277H9.3333V6.62977C9.3333 6.371 9.54237 6.16096 9.79995 6.16096H27.5334C27.7909 6.16096 28 6.371 28 6.62977V21.6325C28 21.8912 27.7909 22.1013 27.5334 22.1013H24.2247C23.9578 23.6316 22.5069 24.6546 20.9837 24.3868C19.8222 24.1824 18.9122 23.2687 18.7087 22.1013H8.35806C8.09113 23.6316 6.64027 24.6546 5.11706 24.3868C3.95555 24.1824 3.04555 23.2687 2.84206 22.1013H0.466705C0.209127 22.1013 5.72205e-05 21.8912 5.72205e-05 21.6325V16.4753C5.72205e-05 16.3853 0.0261974 16.2976 0.0747051 16.2221L4.27465 9.65842ZM3.73335 12.2558L1.61935 15.5376H7.46665V12.2558H3.73335ZM21.4666 23.5078C22.4975 23.5078 23.3333 22.6681 23.3333 21.6325C23.3333 20.5968 22.4975 19.7571 21.4666 19.7571C20.4358 19.7571 19.6 20.5968 19.6 21.6325C19.6 22.6681 20.4358 23.5078 21.4666 23.5078ZM21.4666 18.8195C22.8321 18.8209 23.9969 19.811 24.2246 21.1636H27.0666V20.226H24.7333V19.2883H27.0666V7.09859H10.2666V8.03627H26.1334V8.97396H10.2667V19.2883H18.2V20.226H10.2666V21.1636H18.7086C18.9364 19.8115 20.1012 18.8208 21.4666 18.8195ZM5.6 23.5078C6.63086 23.5078 7.46665 22.6681 7.46665 21.6325C7.46665 20.5968 6.63086 19.7571 5.6 19.7571C4.56914 19.7571 3.73335 20.5968 3.73335 21.6325C3.73335 22.6681 4.56914 23.5078 5.6 23.5078ZM2.842 21.1636C3.10893 19.6333 4.55979 18.6103 6.083 18.878C7.24451 19.0825 8.15451 19.9962 8.358 21.1636H9.33335V10.3805H4.92335L4.32135 11.3181H7.93335C8.19093 11.3181 8.4 11.5282 8.4 11.787V16.0065C8.4 16.2652 8.19093 16.4753 7.93335 16.4753H1.022L0.933353 16.6113V19.2883H2.33335V20.226H0.933353V21.1636H2.842V21.1636Z" fill="black"/>
                                 </svg>
                                 <span><b>Доставка по Барнаулу!</b></span>
-                            </div>
+                            </a>
                             <div class="header-search" id="title-search">
                                 <form action="/catalog/search/" class="search-form">
                                     <input id="title-search-input" type="text" name="q" value="" maxlength="50" autocomplete="off" placeholder="" onkeyup="search(this.value);">
@@ -1148,7 +1156,7 @@
                                     <input type="text" id="" name="" placeholder="Ваше имя">
                                 </div>
                                 <div class="form-label mb-4">
-                                    <input type="tel" id="" name="" placeholder="Ваш телефон">
+                                    <input class="js-mask-tel" type="tel" id="" name="" placeholder="Ваш телефон">
                                 </div>
                                 <div class="textarea-label mb-2">
                                     <textarea name="" id="" cols="30" rows="3" placeholder="Ваше сообщение"></textarea>
@@ -1266,7 +1274,7 @@
     </body>
     
     <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-    <script src="js/main.min.js"></script>  
+    <script src="js/libs.min.js"></script>  
     <script src="js/custom.js"></script>
 
 </html>
