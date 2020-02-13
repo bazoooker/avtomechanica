@@ -1772,16 +1772,17 @@ ul {
   ul li {
     position: relative;
     margin-bottom: 10px;
-    padding: 0 0 0 40px;
-    list-style: none; }
+    padding: 0 0 0 30px;
+    list-style: none;
+    line-height: 1.45; }
     ul li::before {
       position: absolute;
       content: '';
       left: 3px;
-      top: 10px;
-      width: 10px;
-      height: 10px;
-      background-color: yellow;
+      top: 6px;
+      width: 6px;
+      height: 6px;
+      background-color: #C31E32;
       border-radius: 50%; }
     ul li ul {
       margin: 18px 0 18px 0; }
@@ -1791,6 +1792,16 @@ ul {
           width: 8px;
           height: 8px;
           background-color: gray; }
+  ul.list-unstyled {
+    padding-left: 2px;
+    margin: 0px 0 40px 0; }
+    ul.list-unstyled li {
+      position: relative;
+      margin-bottom: 10px;
+      padding: 0 0 0 0px;
+      list-style: none; }
+      ul.list-unstyled li::before, ul.list-unstyled li::after {
+        display: none; }
 
 ol {
   padding-left: 0;
