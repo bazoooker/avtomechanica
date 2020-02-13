@@ -25,7 +25,27 @@
 .font-primary 		{font-family: $font-1;}
 .font-secondary 	{font-family: $font-2;}
 
-.rub 				{font-family: 'Verdana'; font-size: .93em; color: $color-black;}
+.rub 				{
+	position: relative;
+	padding-right: 18px;
+    background-image: url(/img/icons/icon-rub.svg);
+    background-size: 12%;
+    background-repeat: no-repeat;
+    background-position: right center;
+	// &::before {
+	//     position: absolute;
+	//     content: '';
+	//     width: 15px;
+	//     height: 60%;
+	//     top: 50%;
+	//     right: 0;
+	//     transform: translateY(-50%);
+	//     background-image: url(/img/icons/icon-rub.svg);
+	//     background-position: 50% 50%;
+	//     background-size: contain;
+	//     background-repeat: no-repeat;
+	// }
+}
 .text-decoration-none {text-decoration: none;}
 
 

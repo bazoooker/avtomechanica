@@ -26,20 +26,18 @@ $(document).ready(function(){
 
 
 
-    // сообщение при добавлении в корзину
-    $('.js-message-basket-add').click(function(e) {
+
+
+    // сообщение
+    $('.js-message').click(function(e) {
         e.preventDefault();
-        $('.message-basket').addClass('active');
-        $('.btn-basket-icon').addClass('active');
+        var message = $(this).data('message'); 
+        $('.message').addClass('active').html(message);
 
         setTimeout(function() {
-            $('.message-basket').removeClass('active');
-        }, 800);
-
-        setTimeout(function() {
-            $('.btn-basket-icon').removeClass('active');
-        }, 30);
-    })
+            $('.message').removeClass('active');
+        }, 1000);
+    });
 
 
 
