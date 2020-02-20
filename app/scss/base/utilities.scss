@@ -26,12 +26,13 @@
 .font-secondary 	{font-family: $font-2;}
 
 .rub 				{
-	position: relative;
-	padding-right: 18px;
-    background-image: url(/img/icons/icon-rub.svg);
-    background-size: 12%;
-    background-repeat: no-repeat;
-    background-position: right center;
+	font-family: "Arimo", Arial;
+	// position: relative;
+	// padding-right: 18px;
+ //    background-image: url(/img/icons/icon-rub.svg);
+ //    background-size: 12%;
+ //    background-repeat: no-repeat;
+ //    background-position: right center;
 	// &::before {
 	//     position: absolute;
 	//     content: '';

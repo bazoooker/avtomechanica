@@ -744,11 +744,16 @@
 }
 @media screen and (min-width: 768px) {
 	.btn-basket:hover {
+		.btn-basket-icon svg {
+			animation: anim-btn-compare-icon 700ms;
+		}
+	}
+	.btn-basket.active {
 		.btn-basket-icon {
-			animation: anim-btn-basket 700ms;
+			animation: anim-btn-basket 400ms;
 		}
 		.btn-basket-icon::before {
-			animation: anim-btn-basket-icon 700ms;
+			animation: anim-btn-basket-icon 500ms;
 		}
 		.basket-handler-left {
 			transform: rotate(-55deg);
@@ -757,7 +762,6 @@
 		    transform: rotate(55deg);
 		}
 	}
-	
 }
 .btn-basket-icon {
 	position: relative;
@@ -788,9 +792,7 @@
 		border-radius: 50%;
 		font-size: 9px;
 		font-style: normal;
-	}
-	&.active {
-		transform: scale(1.15);
+		z-index: 2;
 	}
 }
 .btn-basket-text {
@@ -851,7 +853,6 @@
 		.btn-compare-icon svg {
 			animation: anim-btn-compare-icon 700ms;
 		}
-
 	}
 }
 .btn-compare-icon {
@@ -1299,7 +1300,7 @@
 .catalog-unit-list {
 	padding: 0 0 0 57px;
     margin: 0 0 0 -2px;
-    height: 70px;
+    height: 65px;
     overflow: hidden;
 }
 .catalog-unit-item {
@@ -1800,14 +1801,28 @@
     margin: -20px -20px 17px -20px;
 	.pretty {
 		display: block;
-		padding: 6px 0;
+		// padding: 6px 0;
+		margin: 0 0 8px 0;
 		cursor: pointer;
 		user-select: none;
 		z-index: 1;
+		white-space: normal;
+    	line-height: 1.2;
+
+		.state label {
+			padding: 0 0 0 26px;
+			text-indent: 0;
+		}
+		.state label:after,
+		.state label:before,
+		.state-deco {
+			top: 10px;
+		}
+
+
 		.state-deco {
 			position: absolute;
 		    left: -1px;
-		    top: 50%;
 		    width: 20px;
 		    height: 20px;
 		    background-color: $color-red;
@@ -2123,6 +2138,7 @@
 	}
 	.product-img {
 		display: block;
+		flex: 0 0 70px;
 		width: 70px;
 		height: 70px;
 		@include bg-contain;
@@ -2147,8 +2163,11 @@
 	.product-price {
 		@include font-size(24);
 		margin: 0 30px 0 auto;
+		flex: 0 0 130px;
+		width: 130px;
 	}
 	.product-counter {
+		flex: 0 0 113px;
 		margin: 0 30px 0 0;
 	}
 	.product-btn {
@@ -2255,9 +2274,7 @@
 	@include font-size(36);
 	font-weight: 700;
 	.rub {
-		padding-right: 32px;
-		background-image: url(/img/icons/icon-rub-bold.svg);
-		background-size: 13%;
+		font-family: "Arimo", Arial;
 	}
 }
 .product-detail-counter {
@@ -2334,17 +2351,7 @@
 		animation-duration: 200ms;
     }
 }
-// @keyframes anim-message-basket {
-// 	 0% {
-// 	 	box-shadow: 0 0 0 0 rgba(0,0,0,0);
-// 	 }
-// 	 80% {
-// 	 	box-shadow: 0 0 0 35px $color-blue;
-// 	 }
-// 	 100% {
-// 	 	box-shadow: 0 0 0 0 rgba(0,0,0,0);
-// 	 }
-// }
+
 
 
 
@@ -2820,11 +2827,11 @@
 		}
 	}
 
-	.product-detail-price {
-		.rub {
-			padding-right: 26px;
-		}
-	}
+	// .product-detail-price {
+	// 	.rub {
+	// 		padding-right: 26px;
+	// 	}
+	// }
 
 }
 

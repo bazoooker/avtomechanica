@@ -41,6 +41,13 @@ $(document).ready(function(){
     // маска для телефона
     $('.js-mask-tel').mask('+7 (999) 999-99-99', {placeholder:"_"});
 
+    $('.js-basket-add').click(function() {
+        $('.btn-basket').addClass('active');
+        setTimeout(function() {
+            $('.btn-basket').removeClass('active');
+        }, 700);
+    });
+
 
 
 
