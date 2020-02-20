@@ -21,6 +21,57 @@
 	overflow: hidden;
 	width: 100%;
 	min-height: 100vh;
+	&.sticky-header {
+		padding-top: 100px;
+
+
+		.header {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100px;
+			padding: 14px 0 9px 0;
+			background-color: #fff;
+			box-shadow: 0 0 35px 0 rgba(0,0,0,.23);
+			z-index: 99;
+			background: #ededed;
+			&::after {
+				display: none;
+			}
+			.container {
+				@include flex-row(nowrap, flex-start, flex-start);
+			}
+		}
+		.header-logo {
+			flex: 0 0 75px;
+			width: 75px;
+			height: 75px;
+			margin: 0 30px 0 0;
+		}
+		.btn-basket,
+		.btn-compare {
+			padding: 6px 0;
+		}
+		.header-top {
+			margin: 0;
+		}
+		.delivery-badge {
+			margin-left: 10px;
+		}
+
+
+
+
+		.catalog-menu-holder {
+			position: fixed;
+			top: 95px;
+			left: 0;
+			width: 100%;
+			z-index: 100;
+		}
+
+	}
 }
 .border-radius {
 	border-radius: 14px;
@@ -1169,7 +1220,6 @@
 	position: relative;
 	height: 161px;
 	transition: all 150ms;
-	// z-index: -1;
 	&.active {
 		z-index: 8;
 		.catalog-unit-content{
@@ -1184,19 +1234,19 @@
 			width: 100%;
 		}
 	}
-	&.disabled {
-		transform: scale(.96);
-		opacity: .65;
-		z-index: -1;
-		.catalog-unit-header p,
-		.catalog-unit-item a {
-			color: gray;
-		}
-		.catalog-unit-icon::before,
-		.catalog-unit-divider {
-			background-color: gray;
-		}
-	}
+	// &.disabled {
+	// 	transform: scale(.96);
+	// 	opacity: .65;
+	// 	z-index: -1;
+	// 	.catalog-unit-header p,
+	// 	.catalog-unit-item a {
+	// 		color: gray;
+	// 	}
+	// 	.catalog-unit-icon::before,
+	// 	.catalog-unit-divider {
+	// 		background-color: gray;
+	// 	}
+	// }
 }
 
 .catalog-unit-content {
@@ -1255,13 +1305,15 @@
 .catalog-unit-item {
 	font-size: 14px;
 	display: inline-block;
-	padding: 0 3px 0 2px;
+	padding: 0px 0px 0 4px;
 	margin: 0;
 	list-style: none;
 	line-height: 1;
+	&:last-of-type {display: none;}
+
 	a {
 		display: inline-block;
-		padding: 5px 0;
+		padding: 5px 5px 1px 0;
 	}
 	&::before {
 		display: none;
@@ -1276,6 +1328,48 @@
 	border-radius: 50%;
 	&:last-child {display: none;}
 }
+.catalog-menu {
+	.container {
+		position: relative;
+	    padding: 40px;
+	    background: #fff;
+	    border-radius: 14px;
+	    box-shadow: 0 0 25px 1px rgba(0, 0, 0, 0.1);
+	}
+	.catalog-unit {
+		height: auto;
+		margin: 0 0 20px 0;
+		&.active {
+			z-index: 1;
+			.catalog-unit-content{
+				box-shadow: none !important;
+			}
+			.catalog-unit-icon::before {
+				animation: animate-catalog-unit-icon-deco 250ms;
+				width: 100%;
+			}
+		}
+	}
+	// .catalog-unit-header {
+	// 	min-height: 1px;
+	// }
+	.catalog-unit-list {
+		height: auto;
+	}
+	.catalog-unit-content {
+		width: 100%;
+		position: static;
+		padding: 0;
+		border-radius: 0;
+	}
+}
+
+
+
+
+
+
+
 
 
 
@@ -2274,6 +2368,19 @@
 // 1200= ==============================================================
 
 @media screen and (max-width: 1200px) {
+
+	.wrapper.sticky-header {
+		.header-nav .theme-link {
+			@include font-size(12);
+		}
+		.header-logo {
+			flex: 0 0 45px;
+			width: 45px;
+			height: 45px;
+		}
+	}
+
+
 	.top-bar-nav {
 		overflow: auto;
 		max-width: 600px;
@@ -2395,6 +2502,34 @@
 // 992= ==============================================================
 
 @media screen and (max-width: 992px) {
+
+	.wrapper.sticky-header {
+		.header {
+			height: 72px;
+		}
+		.delivery-badge {display: none;}
+		.header-logo {
+			flex: 0 0 42px;
+			width: 42px;
+			height: 42px;
+		}
+		.header-content {
+			@include flex-row(nowrap,flex-end,center);
+			.hamburger {
+				margin: 0;
+			}
+		}
+		.header-nav {
+			display: none;
+		}
+		.header-top {
+			margin: 0 25px 0 0px;
+			@include flex-row(nowrap,flex-end,center);
+		}
+		.catalog-menu-holder {
+			top: 68px;
+		}
+	}
 
 	// header
 	.header-search {
@@ -2568,6 +2703,21 @@
 // 768= ==============================================================
 
 @media screen and (max-width: 768px) {
+	.wrapper {
+		&.sticky-header {
+			.header {
+				padding: 0;
+				.container {
+					@include flex-row(nowrap,flex-start,center);
+				}
+			}
+			.header-logo {
+				flex: 0 0 60px;
+				width: 60px;		
+				height: 60px;
+			}
+		}
+	}
 
 	// header
 	.top-bar,
@@ -2617,6 +2767,18 @@
 	// catalog-menu
 	.catalog-menu {
 		.btn-close {display: none;}
+		.catalog-unit-header {
+			padding: 0;
+		}
+		.catalog-unit-icon {
+			background-image: none;
+			height: 1px;
+			top: auto;
+			bottom: 0;
+		}
+		.catalog-unit-list {
+			padding: 0;
+		}
 	}
 	.catalog-menu-list {
 		padding: 45px 25px;

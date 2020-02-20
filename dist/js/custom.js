@@ -18,11 +18,30 @@
 // слайдеры
 
 
+$(document).scroll(function(){
+    var pageScrolled = window.pageYOffset > 1;
+    var headerIsStatic = !$('.wrapper').hasClass('sticky-header');
+
+    if ( headerIsStatic && pageScrolled ) {
+       $('.wrapper').addClass('sticky-header');
+       console.log('i should not be here');
+       headerIsStatic = false;
+    }
+    if ( (!headerIsStatic) && (!pageScrolled) ) {
+       $('.wrapper').removeClass('sticky-header');
+        console.log('i should not be here');
+        // console.log('pagescrolled > 182 is ' + pageScrolled);
+        headerIsStatic = true;
+    }
+});
+
 $(document).ready(function(){
 
 
     // маска для телефона
     $('.js-mask-tel').mask('+7 (999) 999-99-99', {placeholder:"_"});
+
+
 
 
 
@@ -53,14 +72,12 @@ $(document).ready(function(){
         if($(window).width() > 992) {
         // $('.js-catalog-unit-hover').addClass('disabled');
             $(this).addClass('active');
-            console.log('more than 992');
         }
     });
     $('.js-catalog-unit-hover').mouseleave(function() {
         if($(window).width() > 992) {
             // $('.js-catalog-unit-hover').removeClass('disabled');
             $(this).removeClass('active');
-            console.log('more than 992');
         }
     });
 
