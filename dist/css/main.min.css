@@ -8819,6 +8819,12 @@ Build date: 2018-12-11 23:23:51
 
 .hero {
   margin-bottom: 73px; }
+  .hero.ms-explorer-fix .hero-slide-deco::before {
+    opacity: .7 !important; }
+  .hero.ms-explorer-fix .hero-slide-deco::after {
+    opacity: .5 !important; }
+  .hero.ms-explorer-fix .hero-spec {
+    background-image: url(/img/bg/bg-primary-small-ms-explorer.png) !important; }
 
 .hero-slider {
   height: 430px; }
@@ -8857,7 +8863,7 @@ Build date: 2018-12-11 23:23:51
     width: 100%;
     height: 100%;
     background: #C31E32;
-    opacity: 80%;
+    opacity: .8;
     z-index: -2;
     mix-blend-mode: multiply; }
   .hero-slide-deco::before {
@@ -8868,6 +8874,7 @@ Build date: 2018-12-11 23:23:51
     width: 100%;
     height: 100%;
     background-image: url(/img/bg/spec-main-overlay.png);
+    opacity: .8;
     z-index: -1;
     mix-blend-mode: multiply; }
 

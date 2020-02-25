@@ -18,6 +18,9 @@
 // слайдеры
 
 
+
+
+
 $(document).scroll(function(){
     var pageScrolled = window.pageYOffset > 1;
     var headerIsStatic = !$('.wrapper').hasClass('sticky-header');
@@ -36,6 +39,19 @@ $(document).scroll(function(){
 });
 
 $(document).ready(function(){
+
+
+    // фикс на IE и Edge для картинки промо-блока
+    var ua = window.navigator.userAgent;
+    var trident = ua.indexOf('Trident/');
+    var edge = ua.indexOf('Edge/');
+
+    if (trident > 0 || edge > 0) {
+        $('.hero').addClass('ms-explorer-fix');
+    };
+    // if (edge > 0) {
+    //     $('.hero-slider').addClass('ms-explorer-fix');
+    // };
 
 
     // маска для телефона
