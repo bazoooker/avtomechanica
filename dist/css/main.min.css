@@ -8076,6 +8076,8 @@ Build date: 2018-12-11 23:23:51
   padding: 11px 55px 11px 28px;
   text-decoration: none;
   cursor: pointer;
+  border: 0;
+  outline: none;
   transition: 300ms; }
   .btn.btn-no-icon {
     padding: 11px 30px 11px 30px; }
@@ -8105,6 +8107,23 @@ Build date: 2018-12-11 23:23:51
     color: white;
     box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.25); }
     .btn-main.btn-hover-accent:hover path {
+      fill: #fff; }
+
+.btn-secondary {
+  background-color: #ededed;
+  border-radius: 30px; }
+  .btn-secondary path {
+    transition: 300ms; }
+  .btn-secondary:active, .btn-secondary:focus {
+    background-color: #C31E32; }
+  .btn-secondary.btn-hover-yellow:hover {
+    background-color: #FFC700;
+    box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.25); }
+  .btn-secondary.btn-hover-accent:hover {
+    background-color: #C31E32;
+    color: white;
+    box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.25); }
+    .btn-secondary.btn-hover-accent:hover path {
       fill: #fff; }
 
 .btn-fancy-basket .fancy-basket-icon {
@@ -8711,6 +8730,26 @@ Build date: 2018-12-11 23:23:51
   100% {
     transform: none; } }
 
+.theme-arrow {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 47px;
+  height: 47px;
+  background-color: #FFC700;
+  border-radius: 50%;
+  margin-bottom: 4px;
+  transition: 300ms; }
+  .theme-arrow:hover {
+    background-color: #C31E32; }
+    .theme-arrow:hover svg path {
+      fill: white; }
+  .theme-arrow::after {
+    display: none; }
+  .theme-arrow.theme-arrow-left {
+    transform: rotate(-180deg); }
+
 .theme-pagination {
   padding: 0 40px;
   bottom: 29px !important; }
@@ -9292,7 +9331,10 @@ Build date: 2018-12-11 23:23:51
 
 .footer-link {
   display: block;
-  padding: 8px 0; }
+  padding: 8px 0;
+  flex-wrap: wrap; }
+  .footer-link small {
+    flex: 1 1 100%; }
 
 .legal {
   border-top: 1px solid lightgray;
@@ -9487,7 +9529,7 @@ Build date: 2018-12-11 23:23:51
 
 .inner-page .header {
   background-color: #EDEDED;
-  padding: 12px 0 20px 0; }
+  padding: 6px 0 10px 0; }
   .inner-page .header::after {
     display: none; }
 
@@ -9778,7 +9820,7 @@ Build date: 2018-12-11 23:23:51
 .product-detail-controls {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin: 0 0 45px 0; }
 
@@ -9793,7 +9835,7 @@ Build date: 2018-12-11 23:23:51
 
 .product-detail-counter {
   flex: 0 0 112px;
-  margin: 0 30px 0 auto; }
+  margin: 0 auto 0 0; }
 
 .product-detail-btn {
   margin: 0 10px 0 0; }
@@ -9856,6 +9898,54 @@ Build date: 2018-12-11 23:23:51
     animation-delay: 100ms;
     animation-name: anim-message-basket;
     animation-duration: 200ms; }
+
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999; }
+  .modal .btn-close {
+    position: absolute;
+    top: 15px;
+    right: 15px; }
+  .modal .form-label {
+    box-shadow: 0 0 0 1px #e2e2e2; }
+  .modal.hidden {
+    pointer-events: none; }
+    .modal.hidden .modal-bg {
+      opacity: 0;
+      pointer-events: none;
+      transition-delay: 300ms; }
+    .modal.hidden .modal-content {
+      opacity: 0;
+      pointer-event: none;
+      transform: translate(-50%, -50%) scale(1.2);
+      transition-delay: 0ms; }
+
+.modal-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+  transition: 300ms; }
+
+.modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  min-height: 350px;
+  padding: 40px;
+  border-radius: 14px;
+  background-color: whitesmoke;
+  transition: 300ms;
+  transition-delay: 200ms; }
 
 @media screen and (max-width: 1200px) {
   .wrapper.sticky-header .header-nav .theme-link {
@@ -10072,8 +10162,10 @@ Build date: 2018-12-11 23:23:51
   .catalog-list-top.hidden {
     opacity: 0;
     transform: translateX(320px) !important; }
-  .product-detail-sorting {
-    display: none; } }
+  .product-detail-controls .btn-secondary {
+    padding: 7px 28px 7px 28px; }
+    .product-detail-controls .btn-secondary svg {
+      display: none; } }
 
 @media screen and (max-width: 768px) {
   .wrapper.sticky-header .header {
@@ -10123,12 +10215,15 @@ Build date: 2018-12-11 23:23:51
   .catalog-menu .btn-close {
     display: none; }
   .catalog-menu .catalog-unit-header {
-    padding: 0; }
+    padding: 0;
+    min-height: 1px; }
   .catalog-menu .catalog-unit-icon {
     background-image: none;
     height: 1px;
     top: auto;
     bottom: 0; }
+    .catalog-menu .catalog-unit-icon::before {
+      display: none; }
   .catalog-menu .catalog-unit-list {
     padding: 0; }
   .catalog-menu-list {
@@ -10137,11 +10232,15 @@ Build date: 2018-12-11 23:23:51
       flex: 0 0 50%; }
   .inner-page .header {
     padding: 0; }
+  .product-detail {
+    margin: 40px 0 0 0; }
   .product-detail-controls {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-start;
+    flex-flow: row nowrap;
+    justify-content: space-between;
     align-items: center; }
+    .product-detail-controls .btn-secondary {
+      flex: 0 0 195px; }
   .product-detail-price {
     flex: 1 1 100%;
     margin: 0 0 10px 0; }
@@ -10150,7 +10249,15 @@ Build date: 2018-12-11 23:23:51
   .product-detail-info .tabs .tab-item {
     margin-right: 15px; }
     .product-detail-info .tabs .tab-item .text-size-22 {
-      font-size: 1rem; } }
+      font-size: 1rem; }
+  .modal-content {
+    width: 90%;
+    max-width: 500px;
+    padding: 35px; }
+  .theme-pagination .swiper-pagination-bullet {
+    width: 6px;
+    height: 6px;
+    margin: 0 4px !important; } }
 
 @media screen and (max-width: 576px) {
   .top-bar .container {
@@ -10185,16 +10292,18 @@ Build date: 2018-12-11 23:23:51
   .section-form::before {
     width: 70%;
     right: -35%; }
-  .product-detail {
-    margin: 40px 0 0 0; }
   .product-detail-controls {
-    padding: 30px 8px;
-    background-color: #EDEDED;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
     border-radius: 14px; }
+    .product-detail-controls .btn-secondary {
+      margin: 10px 0; }
+    .product-detail-controls .product-detail-sorting {
+      display: none; }
+    .product-detail-controls .counter-input {
+      background-color: whitesmoke !important; }
   .product-detail-price {
     margin: 0 0 20px 0;
     text-align: center; }
@@ -10243,6 +10352,15 @@ Build date: 2018-12-11 23:23:51
         @media screen and (max-width: 413px) and (max-width: 1200px) {
           .product-detail-info .tabs .tab-item .text-size-22 {
             font-size: calc(1.2625rem + 0.15vw) ; } }
+
+@media screen and (max-width: 413px) {
+  .modal .btn-close {
+    top: 10px;
+    right: 10px; }
+  .modal-content {
+    width: 95%;
+    max-width: 400px;
+    padding: 40px 20px; } }
 
 @media screen and (max-width: 375px) {
   .header-logo {

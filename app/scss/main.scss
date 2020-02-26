@@ -151,6 +151,8 @@
 	padding: 11px 55px 11px 28px;
 	text-decoration: none;
 	cursor: pointer;
+	border: 0;
+	outline: none;
 	transition: 300ms;
 	&.btn-no-icon {
 		padding: 11px 30px 11px 30px;
@@ -182,6 +184,29 @@
 	}
 	&.btn-hover-white:hover {
 		background-color: #fff;
+		box-shadow: 0 4px 4px 1px rgba(0,0,0,.25);
+	}
+	&.btn-hover-accent:hover {
+		background-color: $color-red;
+		color: white;
+		box-shadow: 0 4px 4px 1px rgba(0,0,0,.25);	
+		path {
+			fill: #fff;
+		}
+	}
+}
+.btn-secondary {
+	background-color: #ededed;
+	border-radius: 30px;
+	path {
+		transition:300ms;
+	}
+	&:active,
+	&:focus {
+		background-color: $color-red;
+	}
+	&.btn-hover-yellow:hover {
+		background-color: $color-yellow;
 		box-shadow: 0 4px 4px 1px rgba(0,0,0,.25);
 	}
 	&.btn-hover-accent:hover {
@@ -904,6 +929,31 @@
 
 
 // SLIDERS
+.theme-arrow {
+	display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 47px;
+    height: 47px;
+    background-color: #FFC700;
+    border-radius: 50%;
+    margin-bottom: 4px;
+    transition: 300ms;
+    &:hover {
+    	background-color: $color-red;
+    	svg path {
+    		fill: white;
+    	}
+    }
+    &::after {
+    	display: none;
+    }
+    &.theme-arrow-right {}
+    &.theme-arrow-left {
+    	transform: rotate(-180deg);
+    }
+}
 
 .theme-pagination {
 	padding: 0 40px;
@@ -1649,6 +1699,10 @@
 	.footer-link {
 	display: block;
 	padding: 8px 0;
+	flex-wrap: wrap;
+	small {
+		flex: 1 1 100%;
+	}
 }
 
 .legal {
@@ -1910,7 +1964,7 @@
 .inner-page {
 	.header {
 		background-color: #EDEDED;
-		padding: 12px 0 20px 0;
+		padding: 6px 0 10px 0;
 		&::after {
 			display: none;
 		}
@@ -2281,7 +2335,7 @@
 // =======================================
 
 .product-detail-controls {
-	@include flex-row(nowrap, flex-start, center);
+	@include flex-row(nowrap, space-between, center);
 	margin: 0 0 45px 0;
 
 
@@ -2295,7 +2349,7 @@
 }
 .product-detail-counter {
 	flex: 0 0 112px;
-	margin: 0 30px 0 auto;
+	margin: 0 auto 0 0;
 }
 .product-detail-btn {
 	margin: 0 10px 0 0;
@@ -2373,7 +2427,62 @@
 
 
 
+// =========== modals
+.modal {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	.btn-close {
+		position: absolute;
+	    top: 15px;
+	    right: 15px;
+	}
+	.form-label {
+		box-shadow: 0 0 0 1px #e2e2e2;
+	}
+	&.hidden {
+		pointer-events: none;
+		.modal-bg {
+			opacity: 0;
+			pointer-events: none;
+			transition-delay: 300ms;
+		}
+		.modal-content {
+			opacity: 0;
+			pointer-event: none;
+			transform: translate(-50%, -50%) scale(1.2);
+			transition-delay: 0ms;
+		}
+	}
+}
+.modal-bg {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,.6);
+	z-index: -1;
+	transition: 300ms;
+}
+.modal-content {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 500px;
+	min-height: 350px;
+	padding: 40px;
+	border-radius: 14px;
+	background-color: whitesmoke;
+	transition: 300ms;
+	transition-delay: 200ms;
 
+}
+.modal-close {}
 
 
 
@@ -2713,8 +2822,15 @@
 	}
 
 	// detail sorting
-	.product-detail-sorting {
-		display: none;
+	// .product-detail-sorting {
+	// 	display: none;
+	// }
+
+	.product-detail-controls {
+		.btn-secondary {
+			padding: 7px 28px 7px 28px;
+			svg {display: none;}
+		}
 	}
 }
 
@@ -2792,12 +2908,16 @@
 		.btn-close {display: none;}
 		.catalog-unit-header {
 			padding: 0;
+			min-height: 1px;
 		}
 		.catalog-unit-icon {
 			background-image: none;
 			height: 1px;
 			top: auto;
 			bottom: 0;
+			&::before {
+				display: none;
+			}
 		}
 		.catalog-unit-list {
 			padding: 0;
@@ -2819,8 +2939,14 @@
 
 
 	// product detail
+	.product-detail {
+		margin: 40px 0 0 0;
+	}
 	.product-detail-controls {
-		@include flex-row(wrap,flex-start,center);
+		@include flex-row(nowrap,space-between,center);
+		.btn-secondary {
+			flex: 0 0 195px;
+		}
 	}
 	.product-detail-price {
 		flex: 1 1 100%;
@@ -2848,6 +2974,18 @@
 	// 		padding-right: 26px;
 	// 	}
 	// }
+
+	.modal-content {
+		width: 90%;
+		max-width: 500px;
+		padding: 35px;
+	}
+
+	.theme-pagination .swiper-pagination-bullet {
+		width: 6px;
+		height: 6px;
+		margin: 0 4px !important
+	}
 
 }
 
@@ -2909,14 +3047,16 @@
 	}
 
 	// product detail
-	.product-detail {
-		margin: 40px 0 0 0;
-	}
+
 	.product-detail-controls {
-		padding: 30px 8px;
-		background-color: #EDEDED;
 		@include flex-row(wrap,center,center);
 		border-radius: 14px;
+		.btn-secondary {
+			margin: 10px 0;
+		}
+		.product-detail-sorting {display: none;}
+		.counter-input {background-color: whitesmoke !important;}
+
 	}
 	.product-detail-price {
 		margin: 0 0 20px 0;
@@ -2986,6 +3126,19 @@
 				}
 			}
 		}
+	}
+
+	.modal {
+		.btn-close {
+			top: 10px;
+    		right: 10px;
+		}
+	}
+
+	.modal-content {
+		width: 95%;
+		max-width: 400px;
+		padding: 40px 20px;
 	}
 }
 
